@@ -23,17 +23,26 @@
     
 	<!-- the entire body must be written by student -->
     <script type="text/javascript" src="./script.js">
-		
-        let angle = 0;
-        const line = document.getElementById('line');
+		const inputs = document.querySelectorAll('.code');
 
-        function rotateLine() {
-            angle += 2;
-            line.style.transform = `rotate(${angle}deg)`;
-            setTimeout(rotateLine, 20);
+inputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+        if (input.value !== '') {
+            if (index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
         }
+    });
 
-        rotateLine();
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && index > 0 && input.value === '') {
+            inputs[index - 1].focus();
+        }
+    });
+});
+
+inputs[0].focus();
+        
 </script>
 
 </body>
