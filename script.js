@@ -1,20 +1,16 @@
 //your JS code here. If required.
-const inputs = document.querySelectorAll('.code');
+let angle = 0;
 
-        inputs.forEach((input, index) => {
-        input.addEventListener('input', () => {
-        if (input.value !== '') {
-            if (index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
+        const line = document.getElementById('line');
+
+        function rotateLine() {
+
+            angle += 2;
+
+            line.style.transform = rotate(${angle}deg);
+
+            setTimeout(rotateLine, 20);
+
         }
-    });
 
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Backspace' && index > 0 && input.value === '') {
-            inputs[index - 1].focus();
-        }
-    });
-});
-
-inputs[0].focus();
+        rotateLine();
